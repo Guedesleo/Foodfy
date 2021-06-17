@@ -1,0 +1,25 @@
+{% extends "layout.njk" %}
+{% from './loadRecipes.njk' import loadRecipes %}
+
+{% block head %}
+    <title>Receitas</title>
+{% endblock head %}
+    
+{% block content %}
+    <main style="min-height: 80vh;">
+        {% if filter %}
+            <h3>Procurando por "{{filter}}"</h3>
+        {% endif %}
+
+        {{loadRecipes(recipes, files)}}
+
+        <div class="pagination"
+            data-page = {{pagination.page}}
+            data-total = {{pagination.total}}
+            data-limit = {{pagination.limit}}
+            data-filter = {{filter}}
+        >
+        </div>
+    </main>
+
+{% endblock content %}

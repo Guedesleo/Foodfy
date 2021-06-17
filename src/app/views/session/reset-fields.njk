@@ -1,0 +1,21 @@
+{% import "parts/users-fields.njk" as users %}
+
+{% call users.render(user, error, 'Email', 'Nova Senha') %}
+<div class="item">
+    <div>Repetir Senha</div>
+    <div class="input">
+        <input 
+        required
+        type="password"
+        name="passwordRepeat"
+        placeholder="Repita sua Nova Senha"
+        onkeydown="Validate.clearBorderError(this)"
+        {% if error %}
+            class="red"
+        {% endif %}
+        >
+    </div>
+</div>
+{% endcall %}
+
+<input type="hidden" name="token" value="{{token}}">
